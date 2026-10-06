@@ -22,7 +22,7 @@ details[open] summary::after{transform:rotate(180deg)}
 .thumb-button{width:80px;height:80px;padding:0;border:0;border-radius:14px;background:#f7f7f7;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:transform .16s ease,background .16s ease}
 .thumb-button:hover{background:#eee;transform:scale(1.03)}
 .thumb-button:focus-visible,.modal-close:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
-.thumb-button img{width:76px;height:76px;object-fit:contain;display:block;pointer-events:none}
+.thumb-button img{width:76px;height:76px;object-fit:contain;display:block;pointer-events:none;filter:brightness(0)}
 .exercise-info{min-width:0}
 .exercise-info h3{margin:0 0 5px;font-size:16px;line-height:1.25}
 .muscle{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
@@ -37,7 +37,7 @@ details[open] summary::after{transform:rotate(180deg)}
 .modal-title{margin:4px 54px 4px 4px;font-size:20px}
 .modal-muscle{margin:0 54px 16px 4px;color:var(--muted);font-size:13px}
 .animation-stage{width:100%;aspect-ratio:1/1;border-radius:18px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.animation-stage img{width:92%;height:92%;object-fit:contain;display:block}
+.animation-stage img{width:92%;height:92%;object-fit:contain;display:block;filter:brightness(0)}
 .animation-note{margin:12px 4px 0;text-align:center;color:var(--muted);font-size:12px}
 body.modal-open{overflow:hidden}
 @media(max-width:560px){
@@ -470,11 +470,13 @@ body.modal-open{overflow:hidden}
   const closeButton=modal.querySelector(".modal-close");
   const thumbButtons=document.querySelectorAll(".thumb-button");
   const CDN_BASE="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/";
+  const RAW_BASE="https://raw.githubusercontent.com/bryllim/workout-guide/main/packages/workout-guide/assets/";
   const frameSequence=[1,2,3,2];
   const frameDelay=450;
   let timer=null,currentSlug="",sequenceIndex=0,previousFocus=null;
 
   const frameUrl=(slug,frame)=>`${CDN_BASE}${slug}/frame-${frame}.svg`;
+  const rawFrameUrl=(slug,frame)=>`${RAW_BASE}${slug}/frame-${frame}.svg`;
 
   function preloadFrames(slug){
     [1,2,3].forEach(frame=>{ const img=new Image(); img.src=frameUrl(slug,frame); });
@@ -485,6 +487,7 @@ body.modal-open{overflow:hidden}
   }
 
   function updateFrame(){
+    modalImage.dataset.fallbackUsed="0";
     modalImage.src=frameUrl(currentSlug,frameSequence[sequenceIndex]);
     sequenceIndex=(sequenceIndex+1)%frameSequence.length;
   }
@@ -520,7 +523,25 @@ body.modal-open{overflow:hidden}
     if(previousFocus) previousFocus.focus();
   }
 
-  thumbButtons.forEach(button=>button.addEventListener("click",()=>openModal(button)));
+  thumbButtons.forEach(button=>{
+    const img=button.querySelector("img");
+    if(img){
+      img.addEventListener("error",()=>{
+        if(img.dataset.fallbackUsed==="1") return;
+        img.dataset.fallbackUsed="1";
+        img.src=rawFrameUrl(button.dataset.slug,2);
+      });
+    }
+    button.addEventListener("click",()=>openModal(button));
+  });
+
+  modalImage.addEventListener("error",()=>{
+    if(modalImage.dataset.fallbackUsed==="1") return;
+    modalImage.dataset.fallbackUsed="1";
+    const match=modalImage.src.match(/frame-(\d)\.svg/);
+    const frame=match ? Number(match[1]) : 1;
+    modalImage.src=rawFrameUrl(currentSlug,frame);
+  });
   closeButton.addEventListener("click",closeModal);
   modal.addEventListener("click",e=>{ if(e.target===modal) closeModal(); });
   document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&modal.classList.contains("open")) closeModal(); });
