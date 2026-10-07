@@ -11,6 +11,7 @@ body{margin:0;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe U
 .page{max-width:760px;margin:auto}
 .page-title{margin:6px 2px 24px;font-size:clamp(30px,6vw,46px);line-height:1;font-weight:850;letter-spacing:-.04em}
 .workouts{display:grid;gap:14px}
+.other-exercises{margin-top:28px}
 .workout{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 7px 24px rgba(0,0,0,.07)}
 summary{list-style:none;cursor:pointer;padding:20px 22px;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:space-between;user-select:none}
 summary::-webkit-details-marker{display:none}
@@ -391,6 +392,123 @@ body.modal-open{overflow:hidden}
         </div>
         <div class="sets">2 série</div>
       </div>
+      </div>
+    </details>
+
+    <details class="workout other-exercises">
+      <summary>Ostatné cviky</summary>
+      <div class="exercise-list">
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="lat-pulldown" data-title="Sťahovanie hornej kladky" data-muscle="Chrbát · Biceps" aria-label="Zobraziť animáciu: Sťahovanie hornej kladky">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/lat-pulldown/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Sťahovanie hornej kladky</h3>
+            <p class="muscle">Chrbát · Biceps</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="deadlift" data-title="Mŕtvy ťah" data-muscle="Chrbát · Hamstringy · Zadok" aria-label="Zobraziť animáciu: Mŕtvy ťah">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/deadlift/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Mŕtvy ťah</h3>
+            <p class="muscle">Chrbát · Hamstringy · Zadok</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="back-extension" data-title="Hyperextenzie" data-muscle="Spodný chrbát · Zadok · Hamstringy" aria-label="Zobraziť animáciu: Hyperextenzie">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/back-extension/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Hyperextenzie</h3>
+            <p class="muscle">Spodný chrbát · Zadok · Hamstringy</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="hanging-knee-raise" data-title="Zdvíhanie kolien vo vise" data-muscle="Jadro · Bedrové flexory" aria-label="Zobraziť animáciu: Zdvíhanie kolien vo vise">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/hanging-knee-raise/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Zdvíhanie kolien vo vise</h3>
+            <p class="muscle">Jadro · Bedrové flexory</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="hip-abduction-machine" data-title="Abdukcia na stroji" data-muscle="Zadok · Vonkajšie stehná" aria-label="Zobraziť animáciu: Abdukcia na stroji">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/hip-abduction-machine/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Abdukcia na stroji</h3>
+            <p class="muscle">Zadok · Vonkajšie stehná</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="rear-delt-fly" data-title="Reverse Fly" data-muscle="Zadné ramená · Chrbát" aria-label="Zobraziť animáciu: Reverse Fly">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/rear-delt-fly/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Reverse Fly</h3>
+            <p class="muscle">Zadné ramená · Chrbát</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="bench-press" data-title="Bench Press" data-muscle="Prsia · Triceps · Ramená" aria-label="Zobraziť animáciu: Bench Press">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/bench-press/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Bench Press</h3>
+            <p class="muscle">Prsia · Triceps · Ramená</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="ez-bar-curl" data-title="Bicepsový zdvih s veľkou činkou" data-muscle="Biceps · Predlaktie" aria-label="Zobraziť animáciu: Bicepsový zdvih s veľkou činkou">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/ez-bar-curl/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Bicepsový zdvih s veľkou činkou</h3>
+            <p class="muscle">Biceps · Predlaktie</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="tricep-pushdown" data-title="Tricepsové stláčanie kladky" data-muscle="Triceps" aria-label="Zobraziť animáciu: Tricepsové stláčanie kladky">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/tricep-pushdown/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Tricepsové stláčanie kladky</h3>
+            <p class="muscle">Triceps</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="exercise">
+          <button class="thumb-button" type="button" data-slug="skull-crusher" data-title="Skull Crusher" data-muscle="Triceps" aria-label="Zobraziť animáciu: Skull Crusher">
+            <img src="https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/skull-crusher/frame-2.svg" alt="" loading="lazy">
+          </button>
+          <div class="exercise-info">
+            <h3>Skull Crusher</h3>
+            <p class="muscle">Triceps</p>
+          </div>
+          <div></div>
+        </div>
+
       </div>
     </details>
   </section>
